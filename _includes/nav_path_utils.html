@@ -1,0 +1,18 @@
+{% comment %}
+  경로/섹션 키 단일 로직.
+  - 인자 없이 include: 현재 페이지 기준 url_parts, page_group, section_key, page_group_base 설정.
+  - url 인자로 include: 해당 URL 기준 segs, group_key 설정 (루프에서 section_page.url 넘길 때 사용).
+
+  규칙: URL의 "섹션 키" = 첫 번째 경로 세그먼트 (예: /cases/ → cases).
+  Liquid 배열 인덱스 0/1-based 대응: [2] | default: [1] 사용.
+{% endcomment %}
+
+{% if include.url %}
+  {% assign segs = include.url | split: "/" %}
+  {% assign group_key = segs[2] | default: segs[1] %}
+{% else %}
+  {% assign url_parts = page.url | split: "/" %}
+  {% assign page_group = url_parts[2] | default: url_parts[1] %}
+  {% assign section_key = page_group %}
+  {% assign page_group_base = "/" | append: page_group | append: "/" %}
+{% endif %}

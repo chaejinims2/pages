@@ -1,0 +1,51 @@
+---
+---
+{% assign page_title = page.title %}
+
+<!doctype html>
+<html lang="{{ site.locale | replace: "_", "-" | default: "ko" }}">
+  <head>
+    {% include head.html %}
+    <title>{% if page_title %}{{ page_title }}{% endif %}{% if page_title and site.title %} | {% endif %}{{ site.title }}</title>
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tokens.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/base.css" />
+  </head>
+
+  <body data-theme="dark" data-nav-group="{{ page.nav_group | default: '' }}">
+    <script>
+    (function(){
+      var pos=localStorage.getItem('sidebar-position');
+      if(localStorage.getItem('sidebar-compact')==='1') document.body.classList.add('sidebar-compact');
+      if(pos==='top') document.body.classList.add('sidebar-top');
+      else if(pos==='right'||pos==='bottom'){
+        document.body.classList.add(pos==='right'?'sidebar-right':'sidebar-bottom');
+        function reorderShell(){
+          var shell=document.querySelector('.app-shell');
+          var main=document.querySelector('.app-main');
+          var sidebar=document.querySelector('.app-sidebar');
+          if(shell&&main&&sidebar){ shell.insertBefore(main,sidebar); }
+        }
+        if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',reorderShell);
+        else reorderShell();
+      }
+    })();
+    </script>
+    <div class="app-root">
+      <div class="app-shell">
+        {% include sidebar.html %}
+        <div class="app-main">
+          <main class="app-content">
+            <div class="app-content-inner">
+              {{ content }}
+            </div>
+          </main>
+          <!-- {% include footer.html %} -->
+        </div>
+      </div>
+    </div>
+
+    {% include scripts.html %}
+    {% include pjax.html %}
+  </body>
+</html>

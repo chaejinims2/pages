@@ -1,0 +1,280 @@
+/* =========================================================
+ * 1) Foundation (스케일/레이아웃/타이포) — 테마 무관
+ * ========================================================= */
+ :root {
+  /* ---- 1.1 Layout ---- */
+  --app-sidebar-w: 13.75rem;
+  --app-sidebar-w-compact: 3.5rem;
+  --app-status-h: 2.125rem;
+  --app-top-h: 4rem; /*2.875rem;*/
+  --app-content-padding: clamp(0.75rem, 1.5vw, 1rem);
+  --content-max-w: 80rem;
+  --app-content-available-h: calc(100vh - var(--app-status-h) - (2 * var(--app-content-padding)));
+
+  /* ---- 1.2 Density / Spacing Scale (중복 제거의 핵심) ---- */
+  /* 4px / 6px / 8px / 10px / 12px / 16px */
+  --space-1: 0.25rem;
+  --space-2: 0.375rem;
+  --space-3: 0.5rem;
+  --space-4: 0.625rem;
+  --space-5: 0.75rem;
+  --space-6: 1rem;
+
+  /* ---- 1.3 Radius Scale ---- */
+  --radius-1: 0.25rem;
+  --radius-2: 0.375rem;
+  --radius-3: 0.5rem;
+
+  /* ---- 1.4 Font Size Scale ---- */
+  --fs-1: 0.8125rem;
+  --fs-2: 0.85rem;
+  --fs-3: 0.875rem;
+  --fs-4: 0.95rem;
+  --fs-5: 1rem;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --fw-800: 800;
+  --fw-900: 900;
+
+  /* transparent 래핑 (사용처별) */
+  --app-topmenu-item-border: transparent;
+  --app-nav-item-bg: transparent;
+  --app-nav-item-border: transparent;
+  --app-nav-sub-item-border: transparent;
+
+  /* ---- 1.6 Site ---- */
+  --app-html-font-size: 14px;
+  --app-html-font-size-md: 16px;
+
+  /* =========================================================
+   * 2) Semantic (base → 의미/역할) — 테마 무관
+   *  - base 토큰(bg/text/accent/overlay 등)은 Dark/Light에서 정의
+   * ========================================================= */
+  /* surfaces */
+  --surface-0: var(--bg-0);
+  --surface-1: var(--bg-1);
+  --surface-2: var(--bg-2);
+
+  /* text */
+  --tone-text: var(--text);
+  --tone-text-75: var(--text-75);
+  --tone-text-85: var(--text-85);
+  --tone-text-inverse: var(--text-inverse);
+  --tone-muted: var(--muted);
+  --tone-dim: var(--dim);
+
+  /* accent */
+  --tone-accent: var(--accent);
+  --tone-accent-bg: var(--accent-bg);
+
+  --shadow-subtle: var(--shadow-subtle);
+
+  /* app semantic aliases (기존 이름 호환 유지) */
+  --app-bg: var(--surface-0);
+  --app-panel: var(--surface-1);
+  --app-panel-2: var(--surface-0);
+
+  --app-text: var(--tone-text-75);
+  --app-muted: var(--tone-muted);
+  --app-accent: var(--tone-accent);
+
+  /* nav active */
+  --app-nav-item-active-bg: var(--accent-bg-12);
+  --app-nav-item-active-text: var(--tone-text-inverse);
+
+  /* =========================================================
+   * 3) Components (길이 + 컴포넌트 매핑) — 테마 무관
+   *  - 길이는 Foundation 스케일을 참조
+   *  - 색은 Semantic을 참조
+   * ========================================================= */
+
+  /* ---------- 3.1 Topbar ---------- */
+  --app-topbar-padding: 0 clamp(0.5rem, 1vw, 0.75rem);
+  --app-top-left-gap: 0.625rem;
+
+  --app-icon-btn-border-radius: var(--radius-3);
+  --app-icon-btn-width: 2.25rem;
+  --app-icon-btn-height: 2rem;
+
+  --app-title-logo-height: 1.375rem;
+  --app-title-logo-max-width: 3rem;
+  --app-title-text-font-size: 1rem;
+  --app-title-gap: 0.625rem;
+  --app-title-text-font-weight: var(--fw-900);
+  --app-title-text-letter-spacing: 0.4px;
+
+  --app-topmenu-gap: 0.625rem;
+  --app-topmenu-item-padding: var(--space-2) var(--space-4);
+  --app-topmenu-item-border-radius: var(--radius-3);
+
+  --app-topmenu-sub-gap: var(--space-1);
+  --app-topmenu-sub-padding-left: var(--space-2);
+  --app-topmenu-sub-item-padding: var(--space-1) var(--space-3);
+  --app-topmenu-sub-item-border-radius: var(--radius-2);
+  --app-topmenu-sub-item-font-size: var(--fs-1);
+
+  /* ---------- 3.3 Sidebar / Nav / Statusbar ---------- */
+  --app-sidebar-padding: clamp(0.75rem, 1vh, 0.875rem) 0 clamp(0.75rem, 1vh, 0.875rem) clamp(0.5rem, 1vw, 0.75rem);
+  --app-sidebar-gap: var(--space-5);
+
+  --app-nav-gap: 6px;
+  --app-nav-item-font-size: 1rem;
+  --app-nav-item-gap: 0.5rem;
+  --app-nav-item-padding: 0.625rem;
+  --app-nav-ico-width: 1.25rem;
+  --app-sidebar-title-ico-width: 1.75rem;
+
+  --app-nav-label-font-weight: var(--fw-600);
+  --app-nav-item-active-font-weight: var(--fw-600);
+
+  --app-nav-group-gap: 4px;
+  --app-nav-sub-gap: 2px;
+  --app-nav-sub-padding-left: 10px;
+  --app-nav-sub-margin-top: 2px;
+  --app-nav-sub-margin-left: 8px;
+
+  --app-nav-sub-item-padding: var(--space-2) var(--space-4);
+  --app-nav-sub-item-font-size: var(--fs-1);
+  --app-nav-sub-item-border-radius: var(--radius-2);
+  --app-nav-sub-item-active-font-weight: var(--fw-600);
+
+  --app-statusbar-gap: clamp(0.75rem, 1.5vw, 1.125rem);
+  --app-statusbar-padding: 0 clamp(0.5rem, 1vw, 0.875rem);
+  --app-statusbar-font-size: var(--fs-1);
+}
+
+/* =========================================================
+ * 4) Themes — base 토큰만 관리 (theme.css 합침)
+ *  - [data-theme] 블록에는 bg/text/accent/overlay/border 등 base 토큰만
+ * ========================================================= */
+
+/* ---------- Dark (기본 + data-theme="dark") ---------- */
+:root,
+[data-theme="dark"]{
+  /* base */
+  --bg-0: #0B1220;
+  --bg-1: #0F1A2B;
+  --bg-2: #14243A;
+  --body-bg: #1f2937;
+
+  --border: #FFFFFF14;
+  --shadow: 0 6px 18px #00000059;
+
+  --text: #E5E7EBD9;
+  --text-75: #E5E7EBBF;
+  --text-85: #E5E7EBD9;
+  --text-inverse: #FFFFFFF2;
+
+  --muted: #E5E7EB99;
+  --dim: #E5E7EB4D;
+
+  --accent: #60A5FA;
+  --accent-bg: #60A5FA24;
+
+  --overlay-w-08: #FFFFFF08;
+  --overlay-w-0a: #FFFFFF0A;
+  --overlay-w-0d: #FFFFFF0D;
+  --overlay-w-0f: #FFFFFF0F;
+
+  --accent-bg-12: #60A5FA1F;
+
+  /* Dark 전용 */
+  --app-topbar-bg: #111827E6;
+  --app-statusbar-bg: #111827CC;
+
+  --app-border: #FFFFFF14;
+  --shadow-subtle: #0000000D;
+}
+
+/* ---------- Light ---------- */
+[data-theme="light"]{
+  --bg-0: #D7D7D7;
+  --bg-1: #BEBEBE;
+  --bg-2: #A6A6A6;
+  --body-bg: #CFCFCF;
+
+  --border: #6F6F6F;
+  --shadow: 0 2px 6px rgba(0,0,0,0.10);
+
+  --text: #1F2937;
+  --text-75: #374151;
+  --text-85: #1F2937;
+  --text-inverse: #FFFFFF;
+
+  --muted: #4B5563;
+  --dim: #6B7280;
+
+  --accent: #2563EB;
+  --accent-bg: #2563EB1A;
+
+  --overlay-w-08: #00000008;
+  --overlay-w-0a: #0000000A;
+  --overlay-w-0d: #00000012;
+  --overlay-w-0f: #00000018;
+
+  --accent-bg-12: #2563EB1F;
+
+  --app-topbar-bg: #C9C9C9;
+  --app-statusbar-bg: #C0C0C0;
+
+  --app-border: #7A7A7A;
+  --shadow-subtle: rgba(0,0,0,0.08);
+  --app-nav-item-active-text: #000000;
+}
+
+/* ---------- Modern ---------- */
+[data-theme="modern"]{
+  --bg-0: #f8fafc;
+  --bg-1: #f1f5f9;
+  --bg-2: #e2e8f0;
+  --body-bg: #e2e8f0;
+  --border: #cbd5e1;
+  --shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --text: #0f172a;
+  --text-75: #334155;
+  --text-85: #1e293b;
+  --text-inverse: #ffffff;
+  --muted: #64748b;
+  --dim: #94a3b8;
+  --accent: #6366f1;
+  --accent-bg: #6366f118;
+  --overlay-w-08: #00000008;
+  --overlay-w-0a: #0000000a;
+  --overlay-w-0d: #00000012;
+  --overlay-w-0f: #00000018;
+  --accent-bg-12: #6366f11f;
+  --app-topbar-bg: #f1f5f9;
+  --app-statusbar-bg: #e2e8f0;
+  --app-border: #cbd5e1;
+  --shadow-subtle: rgba(15, 23, 42, 0.06);
+  --app-nav-item-active-text: #0f172a;
+}
+
+/* ---------- Connect (KLM Connect 스타일) ---------- */
+[data-theme="connect"]{
+  --bg-0: #0c1426;
+  --bg-1: #111d33;
+  --bg-2: #162540;
+  --body-bg: #0c1426;
+  --border: #ffffff18;
+  --shadow: 0 6px 18px #00000050;
+  --text: #f0f4f8;
+  --text-75: #e2e8f0;
+  --text-85: #e2e8f0;
+  --text-inverse: #ffffff;
+  --muted: #94a3b8;
+  --dim: #64748b;
+  --accent: #00a1e4;
+  --accent-bg: #00a1e428;
+  --overlay-w-08: #ffffff08;
+  --overlay-w-0a: #ffffff0a;
+  --overlay-w-0d: #ffffff0d;
+  --overlay-w-0f: #ffffff12;
+  --accent-bg-12: #00a1e41f;
+  --app-topbar-bg: #0c1426e6;
+  --app-statusbar-bg: #0c1426cc;
+  --app-border: #ffffff18;
+  --shadow-subtle: #00000014;
+  --app-nav-item-active-text: #ffffff;
+}

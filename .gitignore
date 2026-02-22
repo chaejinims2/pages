@@ -1,0 +1,17 @@
+_site/
+.DS_Store
+
+# Jekyll build outputs
+_site/
+.jekyll-cache/
+.sass-cache/
+.cache/
+
+# Bundler
+.bundle/
+vendor/bundle/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

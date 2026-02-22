@@ -1,0 +1,22 @@
+<header class="app-topbar navbar navbar-expand-lg" aria-label="Top">
+  <div class="d-flex align-items-center gap-2 app-top-right" id="topbarNav">
+    <div class="collapse navbar-collapse" style="flex: 1;">
+      <nav class="app-topmenu">
+        {% include nav_path_utils.html %}
+        {% assign section_pages = site.pages | where: "layout", "section" | where_exp: "item", "item.type == 'topbar'" | sort: "url" %}
+        {% for section_page in section_pages %}
+          {% assign group_base = section_page.url %}
+          {% include nav_path_utils.html url=section_page.url %}
+          {% assign group_title = section_page.title | default: group_key | capitalize %}
+          {% unless section_page.hide %}
+          {% assign nav_icon_name = section_page.icon | default: "book" %}
+          <a class="app-topmenu-item {% if page_group == group_key %}active{% endif %}" href="{{ group_base }}" title="{{ group_title }}" aria-label="{{ group_title }}">
+            <span class="app-nav-ico app-nav-ico--svg" style="--ico: url('{{ site.baseurl }}/assets/svg/{{ nav_icon_name }}-solid.svg');" aria-hidden="true"></span>
+            <span class="app-topmenu-label">{{ group_title }}</span>
+          </a>
+          {% endunless %}
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</header>

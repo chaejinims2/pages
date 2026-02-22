@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<div class="app-page-container">
+{% if page.layout != 'section' %}
+  {% if page.title %}<h1 class="page-title">{{ page.title }}</h1>{% endif %}
+{% endif %}
+{{ content }}
+
+{% comment %} 같은 섹션 내 이전/다음 (하위 페이지만, 대표 페이지 제외). 2개 미만이면 미표시. 첫 페이지 이전=마지막, 마지막 다음=첫 하위. {% endcomment %}
+{% if page.layout != 'section' %}
+{% include nav_path_utils.html %}
+{% assign group_pages = site.pages | where_exp: "item", "item.url contains page_group_base" | sort: "url" %}
+{% assign group_pages_visible = group_pages | where_exp: "item", "item.hide != true" %}
+{% assign group_pages_sub = group_pages_visible | where_exp: "item", "item.url != page_group_base" %}
+{% if group_pages_sub.size >= 2 %}
+  {% assign current_idx = -1 %}
+  {% for p in group_pages_sub %}
+    {% if p.url == page.url %}
+      {% assign current_idx = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
+  {% if current_idx >= 0 %}
+    {% assign sub_size = group_pages_sub.size %}
+    {% assign prev_idx = current_idx | minus: 1 %}
+    {% if prev_idx < 0 %}
+      {% assign prev_idx = sub_size | minus: 1 %}
+    {% endif %}
+    {% assign next_idx = current_idx | plus: 1 %}
+    {% if next_idx >= sub_size %}
+      {% assign next_idx = 0 %}
+    {% endif %}
+    {% assign prev_page = nil %}
+    {% assign next_page = nil %}
+    {% for p in group_pages_sub %}
+      {% if forloop.index0 == prev_idx %}
+        {% assign prev_page = p %}
+      {% endif %}
+      {% if forloop.index0 == next_idx %}
+        {% assign next_page = p %}
+      {% endif %}
+    {% endfor %}
+<nav class="page-nav" aria-label="이전/다음 페이지">
+  <div class="page-nav-inner">
+    <a href="{{ prev_page.url | relative_url }}" class="page-nav-prev" rel="prev">← {{ prev_page.title }}</a>
+    <a href="{{ next_page.url | relative_url }}" class="page-nav-next" rel="next">{{ next_page.title }} →</a>
+  </div>
+</nav>
+  {% endif %}
+{% endif %}
+{% endif %}
+</div>
