@@ -1,8 +1,9 @@
 ---
 layout: section
-permalink: /op-soures/
-title: Opensource Projects
-icon_codepoints: "1F4BB,FE0E"
+permalink: /cases/
+title: Case Study
+icon: book
+type: sidebar
 ---
 
 Here is a curated list of my personal and professional projects. Each project reflects my hands-on experience in system software, storage drivers, and automation tools.

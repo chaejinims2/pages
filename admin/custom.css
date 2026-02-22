@@ -1,0 +1,186 @@
+/**
+ * Decap CMS — 기존 사이트 디자인과 통일
+ * tokens.css (data-theme="dark") 변수를 사용합니다.
+ * 색·간격 수정은 tokens.css 또는 아래 주석의 매핑을 참고하세요.
+ *
+ * 매핑: --bg-0 배경, --bg-1 패널, --bg-2 입력/호버, --app-border 테두리,
+ *       --text-75 / --muted 글자, --accent 강조/버튼
+ */
+
+/* 전체 배경·글자 (사이트와 동일) */
+body,
+[class*="App"],
+[class*="app"],
+[data-reactroot] {
+  background-color: var(--bg-0) !important;
+  color: var(--text-75) !important;
+  font-size: var(--app-html-font-size, 14px) !important;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+  line-height: 1.6 !important;
+}
+
+@media (min-width: 768px) {
+  body,
+  [class*="App"],
+  [class*="app"] {
+    font-size: var(--app-html-font-size-md, 16px) !important;
+  }
+}
+
+/* 사이드바(컬렉션 목록) — 사이트 사이드바 톤 */
+[class*="Sidebar"],
+[class*="sidebar"],
+aside {
+  background-color: var(--bg-1) !important;
+  border-color: var(--app-border) !important;
+  color: var(--text-75) !important;
+}
+
+[class*="Sidebar"] a,
+[class*="sidebar"] a {
+  color: var(--text-75) !important;
+}
+
+[class*="Sidebar"] a:hover,
+[class*="sidebar"] a:hover {
+  background-color: var(--accent-bg-12) !important;
+  color: var(--app-nav-item-active-text, var(--text-inverse)) !important;
+}
+
+/* 패널·카드·에디터 영역 */
+[class*="Pane"],
+[class*="pane"],
+[class*="Card"],
+[class*="card"],
+[class*="MainView"],
+[class*="Editor"],
+main {
+  background-color: var(--bg-1) !important;
+  border-color: var(--app-border) !important;
+  color: var(--text-75) !important;
+}
+
+/* 입력 필드 — 사이트 입력 스타일에 맞춤 */
+input,
+textarea,
+select,
+[contenteditable="true"],
+[class*="input"],
+[class*="Input"] {
+  background-color: var(--bg-2) !important;
+  border-color: var(--app-border) !important;
+  border-radius: var(--radius-3, 0.5rem) !important;
+  color: var(--text-75) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted) !important;
+}
+
+/* 버튼 — 사이트 accent 톤 */
+button,
+[class*="Button"],
+[role="button"] {
+  background-color: var(--bg-2) !important;
+  border: 1px solid var(--app-border) !important;
+  border-radius: var(--radius-3, 0.5rem) !important;
+  color: var(--text-75) !important;
+}
+
+button:hover,
+[class*="Button"]:hover:not([class*="primary"]) {
+  background-color: var(--accent-bg-12) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* 강조 버튼(저장, 게시 등) */
+[class*="primary"],
+button[class*="primary"] {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--text-inverse) !important;
+}
+
+[class*="primary"]:hover,
+button[class*="primary"]:hover {
+  background-color: var(--accent) !important;
+  opacity: 0.9;
+}
+
+/* 헤더·탭 — 사이트 탑바 톤 */
+header,
+[class*="Header"],
+[class*="Nav"],
+[class*="Tab"] {
+  background-color: var(--app-topbar-bg, var(--bg-1)) !important;
+  border-color: var(--app-border) !important;
+  color: var(--text-75) !important;
+}
+
+/* 목록·테이블 행 */
+[class*="List"] [class*="item"],
+[class*="list"] [class*="item"],
+tr {
+  border-color: var(--app-border) !important;
+}
+
+[class*="List"] [class*="item"]:hover,
+tr:hover {
+  background-color: var(--bg-2) !important;
+}
+
+/* 마크다운 에디터 내부 */
+.CodeMirror,
+[class*="CodeMirror"],
+[class*="markdown"] {
+  background-color: var(--bg-2) !important;
+  color: var(--text-75) !important;
+}
+
+.CodeMirror-gutters {
+  background-color: var(--bg-1) !important;
+  border-color: var(--app-border) !important;
+}
+
+/* 드롭다운·메뉴 */
+[class*="Dropdown"],
+[class*="Menu"],
+[class*="menu"] {
+  background-color: var(--bg-1) !important;
+  border-color: var(--app-border) !important;
+  color: var(--text-75) !important;
+}
+
+/* 보조 텍스트 — 사이트 muted */
+[class*="hint"],
+[class*="description"],
+small {
+  color: var(--muted) !important;
+}
+
+/* 링크 — 사이트 accent */
+a {
+  color: var(--accent) !important;
+}
+a:hover {
+  color: var(--accent) !important;
+  text-decoration: underline;
+}
+
+/* 스크롤바 — 사이트 톤 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-1);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--app-border);
+  border-radius: var(--radius-2, 0.375rem);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}

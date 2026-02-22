@@ -1,0 +1,108 @@
+# 사이트 메타 (title/description/url → 레이아웃·jekyll-seo-tag 사용. favicon은 _includes/head.html에서 고정)
+title: "Chaejin Im"
+logo: "assets/images/cherry-logo-red-light.png"
+description: "NVMe Host Driver / Embedded Linux / Automation Tools"
+baseurl: ""
+url: "https://chaejinims2.github.io"
+
+# 사이드바 섹션 표시 순서 (URL 첫 세그먼트). 없으면 url 기준 정렬.
+sidebar_order:
+  - home
+  - cases
+  - techs
+
+# No theme: app-shell only (tokens.css + base.css)
+theme: null
+
+# Use GitHub Pages supported markdown engine
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# GitHub Pages-safe plugins (already present in your repo)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections: pages only (documents/workspaces moved under _pages)
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+defaults:
+  # type: sidebar → 사이드바, type: topbar → 상단바 (섹션 front matter에 type 지정). path는 _pages 내 실제 경로.
+  - scope:
+      path: "cases/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /cases/
+      title: Cases
+  - scope:
+      path: "techs/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /techs/
+      title: Techs
+  - scope:
+      path: "op-soures/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /op-soures/
+      title: Opensource Projects
+  - scope:
+      path: "labs/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /labs/
+      title: Labs
+  - scope:
+      path: "home/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /home/
+      title: Home
+  - scope:
+      path: "settings/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /settings/
+      title: Settings
+  - scope:
+      path: "sitemap/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /sitemap/
+      title: Sitemap
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Optional but recommended
+permalink: pretty
+timezone: Asia/Seoul
+
+# Keep build clean (no theme/cgit; app-shell uses tokens.css + base.css only)
+exclude:
+  - README.md
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+
+# If you place static files under these, Jekyll will include them
+include:
+  - _pages
+  - admin
