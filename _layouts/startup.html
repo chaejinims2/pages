@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ site.locale | replace: '_', '-' | default: 'ko' }}">
+  <head>
+    {% include head.html %}
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tokens.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/base.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/startup.css" />
+  </head>
+  <body data-theme="dark" class="body-home">
+    <div class="startup-root">
+      <header class="startup-hero">
+        <h1 class="startup-title">{{ page.title | default: site.title }}</h1>
+        {% if page.lead %}
+        <p class="startup-lead">{{ page.lead }}</p>
+        {% endif %}
+        <a href="{{ site.baseurl }}/home/?sidebar=collapsed" class="startup-enter">Explore</a>
+      </header>
+      <main class="startup-main">
+        <article class="startup-content">
+          {{ content }}
+        </article>
+      </main>
+      <footer class="startup-footer">
+        <span class="startup-footer-copy">© {{ site.time | date: '%Y' }} {{ site.title }}</span>
+      </footer>
+    </div>
+    {% include scripts.html %}
+  </body>
+</html>
