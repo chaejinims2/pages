@@ -10,6 +10,7 @@ sidebar_order:
   - home
   - cases
   - techs
+  - language
 
 # No theme: app-shell only (tokens.css + base.css)
 theme: null
@@ -47,6 +48,13 @@ defaults:
       layout: section
       permalink: /techs/
       title: Techs
+  - scope:
+      path: "language/index.md"
+      type: "pages"
+    values:
+      layout: section
+      permalink: /language/
+      title: Language
   - scope:
       path: "op-soures/index.md"
       type: "pages"
